@@ -96,6 +96,7 @@ module.exports = class ProxyRequest extends HTTP.IncomingMessage {
   }
 
   end(data, encoding, callback) {
+    if(this.ended) return;
     assert(!this.ended, 'Already called end');
 
     if (typeof data === 'function')
